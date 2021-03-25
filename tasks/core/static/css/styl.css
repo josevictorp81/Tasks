@@ -1,0 +1,98 @@
+.container{
+    padding: 0;
+}
+
+/* Navbar */
+.navbar{
+    border-bottom: 0 solid;
+    margin-bottom: 20px;
+}
+
+
+.navbar-brand{
+    font-weight: bold;
+}
+
+.navbar-light .navbar-nav a.nav-link{
+    color: black;
+}
+
+/* tarefas */
+.list-div{
+    padding: 0;
+}
+
+.list-div h1{
+    padding-left: 30px;
+}
+
+.fas.fa-search{
+    color: rgb(49, 49, 194);
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.add-div{
+    padding-left: 32px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    color: rgb(18, 18, 123);
+}
+
+.search-div input{
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 50%;
+    border: 1px solid gray;
+}
+
+.list-div .search-div{
+    padding-left: 32px;
+}
+
+.task-list{
+    padding-left: 0;
+}
+.list-div .search-div .fas.fa-plus{
+    cursor: pointer;
+    margin: 5px;
+    font-size: 20px;
+    float: right;
+}
+
+.task-item{
+    list-style: none;
+    font-size: 20px;
+    height: 50px;
+    padding-top: 10px;
+    border-bottom: 1px solid #ccc;;
+}
+
+.fas.fa-trash, .fas.fa-edit{
+    cursor: pointer;
+    margin: 5px;
+    font-size: 20px;
+    float: right;
+}
+
+.fas.fa-trash{
+    color: red;
+}
+
+.fas.fa-edit{
+    color: limegreen;
+}
+
+/* footer */
+footer{
+    background-color: rgb(240, 240, 240);
+    height: 50px;
+    border-top: 0 solid;
+}
+
+footer p{
+    color: black;
+    text-align: center;
+    top: 25%;
+    position: relative;
+}
