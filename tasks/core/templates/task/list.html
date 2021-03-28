@@ -12,33 +12,14 @@
             <input type="text" id="search" name="search" placeholder="Tarefa">
             <i class="fas fa-search"></i>
         </div>
-        <ul class="taks-list">
-            <li class="task-item">
-                <span>Título da tarefa</span>
-                <span><i class="fas fa-trash"></i></span>
-                <span><i class="fas fa-edit"></i></span>
-            </li>
-        </ul>
-        <ul class="taks-list">
-            <li class="task-item">
-                <span>Título da tarefa</span>
-                <span><i class="fas fa-trash"></i></span>
-                <span><i class="fas fa-edit"></i></span>
-            </li>
-        </ul>
-        <ul class="taks-list">
-            <li class="task-item">
-                <span>Título da tarefa</span>
-                <span><i class="fas fa-trash"></i></span>
-                <span><i class="fas fa-edit"></i></span>
-            </li>
-        </ul>
-        <ul class="taks-list">
-            <li class="task-item">
-                <span>Título da tarefa</span>
-                <span><i class="fas fa-trash"></i></span>
-                <span><i class="fas fa-edit"></i></span>
-            </li>
-        </ul>
+        {% for t in task %}
+            <ul class="taks-list">
+                <li class="task-item">
+                    <span><a href="{% url 'taskDetail' t.id %}">{{ t.title }}</a></span>
+                    <span><i class="fas fa-trash"></i></span>
+                    <span><i class="fas fa-edit"></i></span>
+                </li>
+            </ul>
+        {% endfor %}
     </div>
 {% endblock %}
