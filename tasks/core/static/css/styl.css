@@ -39,6 +39,10 @@
     color: rgb(18, 18, 123);
 }
 
+#add-link{
+    text-decoration: none;
+}
+
 .search-div input{
     margin-bottom: 10px;
     border-radius: 5px;
@@ -66,6 +70,10 @@
     height: 50px;
     padding-top: 10px;
     border-bottom: 1px solid #ccc;;
+}
+
+.task-item a{
+    text-decoration: none;
 }
 
 .fas.fa-trash, .fas.fa-edit{

@@ -5,9 +5,11 @@
 {% block content %}
     <div class="offset-1 col-10 list-div">
         <h1>Task List</h1>
-        <div class="col-2 add-div">
-            <i class="fas fa-plus"></i> Adicionar Tasks
-        </div>
+        <a href="{% url 'newTask' %}" id="add-link">
+            <div class="col-2 add-div">
+                <i class="fas fa-plus"></i> Adicionar Tasks
+            </div>
+        </a>
         <div class="col-9 search-div">
             <input type="text" id="search" name="search" placeholder="Tarefa">
             <i class="fas fa-search"></i>
