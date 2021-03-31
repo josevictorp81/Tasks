@@ -19,7 +19,7 @@
                 <li class="task-item">
                     <span><a href="{% url 'taskDetail' t.id %}">{{ t.title }}</a></span>
                     <span><i class="fas fa-trash"></i></span>
-                    <span><i class="fas fa-edit"></i></span>
+                    <a href="{% url 'editeTask' t.id %}"><span><i class="fas fa-edit"></i></span></a>
                 </li>
             </ul>
         {% endfor %}

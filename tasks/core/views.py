@@ -33,3 +33,19 @@ def newTask(request):
             'form': form,
         }
         return render(request, 'task/newTask.html', data)
+
+def editeTask(request, id):
+    task = get_object_or_404(Task, pk=id)
+    form = TaskModelForm(instance=task)
+
+    if request.method == 'POST':
+        form = TaskModelForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('taskList')
+    
+    data = {
+        'form': form, 
+        'task': task,
+    }
+    return render(request, 'task/editeTask.html', data)
