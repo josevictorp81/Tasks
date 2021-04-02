@@ -49,3 +49,8 @@ def editeTask(request, id):
         'task': task,
     }
     return render(request, 'task/editeTask.html', data)
+
+def deleteTask(request, id):
+    task = get_object_or_404(Task, pk=id)
+    task.delete()
+    return redirect('taskList')
