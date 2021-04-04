@@ -1,10 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.paginator import Paginator
 
 from .models import Task
 from .forms import TaskModelForm
 
 def taskList(request):
-    task = Task.objects.all().order_by('-created')
+    task_list = Task.objects.all().order_by('-created')
+    paginator = Paginator(task_list, 5)
+
+    page = request.GET.get('page')
+
+    task = paginator.get_page(page)
 
     data = {
         'task': task,

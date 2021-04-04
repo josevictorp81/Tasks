@@ -18,10 +18,21 @@
             <ul class="taks-list">
                 <li class="task-item">
                     <span><a href="{% url 'taskDetail' t.id %}">{{ t.title }}</a></span>
-                    <a href="{% url 'deleteTask' t.id %}"><span><i class="fas fa-trash"></i></span></a>
+                    <a href="{% url 'deleteTask' t.id %}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
                     <a href="{% url 'editeTask' t.id %}"><span><i class="fas fa-edit"></i></span></a>
                 </li>
             </ul>
         {% endfor %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if task.has_previous %}
+                    <a href="?page={{ task.previous_page_number }}"><i class="fas fa-chevron-left"></i></a>
+                {% endif %}
+                <span class="current">{{ task.number }} de {{ task.paginator.num_pages }}</span>
+                {% if task.has_next %}
+                    <a href="?page={{ task.next_page_number }}"><i class="fas fa-chevron-right"></i></a>
+                {% endif %}
+            </span>
+        </div>
     </div>
 {% endblock %}
