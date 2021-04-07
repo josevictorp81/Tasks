@@ -11,8 +11,10 @@
             </div>
         </a>
         <div class="col-9 search-div">
-            <input type="text" id="search" name="search" placeholder="Tarefa">
-            <i class="fas fa-search"></i>
+            <form action="" method="GET">
+                <input type="text" id="search" name="search" placeholder="Tarefa" value="{{ request.GET.search }}">
+                <button class="btn btn-primary" type="submit" id="submit"><i class="fas fa-search"></i></button>
+            </form>
         </div>
         {% for t in task %}
             <ul class="taks-list">
@@ -28,7 +30,9 @@
                 {% if task.has_previous %}
                     <a href="?page={{ task.previous_page_number }}"><i class="fas fa-chevron-left"></i></a>
                 {% endif %}
+                {% if task.paginator.num_pages%}
                 <span class="current">{{ task.number }} de {{ task.paginator.num_pages }}</span>
+                {% endif %}
                 {% if task.has_next %}
                     <a href="?page={{ task.next_page_number }}"><i class="fas fa-chevron-right"></i></a>
                 {% endif %}

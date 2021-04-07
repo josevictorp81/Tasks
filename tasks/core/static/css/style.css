@@ -27,7 +27,7 @@
 }
 
 .fas.fa-search{
-    color: rgb(49, 49, 194);
+    color: white;
     cursor: pointer;
     font-size: 20px;
 }
@@ -44,10 +44,17 @@
 }
 
 .search-div input{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     border-radius: 5px;
-    width: 50%;
+    width: 400px;
+    height: 40px;
     border: 1px solid gray;
+}
+
+.search-div #submit{
+    margin-bottom: 6px;
+    height: 41px;
+    width: 70px;
 }
 
 .list-div .search-div{

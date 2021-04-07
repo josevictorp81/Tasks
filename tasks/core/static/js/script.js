@@ -1,14 +1,14 @@
 $(document).ready(function(){
-    var deleteBtn = $('.delete-btn')
+    var deleteBtn = $('.delete-btn');
 
     $(deleteBtn).on('click', function(e){
-        e.preventDefault()
+        e.preventDefault();
 
-        var delLink = $(this).attr('href')
-        var result = confirm('Quer deletar esta tarefa?')
+        var delLink = $(this).attr('href');
+        var result = confirm('Quer deletar esta tarefa?');
 
         if(result){
-            window.location.href = delLink
+            window.location.href = delLink;
         }
     });
 

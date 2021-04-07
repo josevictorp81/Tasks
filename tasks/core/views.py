@@ -5,12 +5,16 @@ from .models import Task
 from .forms import TaskModelForm
 
 def taskList(request):
-    task_list = Task.objects.all().order_by('-created')
-    paginator = Paginator(task_list, 5)
+    search = request.GET.get('search')
+    if search:
+        task = Task.objects.filter(title__icontains=search)
+    else:
+        task_list = Task.objects.all().order_by('-created')
+        paginator = Paginator(task_list, 5)
 
-    page = request.GET.get('page')
+        page = request.GET.get('page')
 
-    task = paginator.get_page(page)
+        task = paginator.get_page(page)
 
     data = {
         'task': task,
