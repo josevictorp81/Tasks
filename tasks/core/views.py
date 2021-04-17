@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+import datetime
 
 from .models import Task
 from .forms import TaskModelForm
@@ -9,11 +10,17 @@ from .forms import TaskModelForm
 @login_required
 def taskList(request):
     search = request.GET.get('search')
+    task_done_recently = Task.objects.filter(done='Done', updated__gt=datetime.datetime.now()-datetime.timedelta(days=30), user=request.user).count()
+    task_done = Task.objects.filter(done='Done', user=request.user).count()
+    task_doing = Task.objects.filter(done='Doing', user=request.user).count()
+    #filter = request.GET.get('filter')
     if search:
         task = Task.objects.filter(title__icontains=search, user=request.user)
+    #elif filter:
+        #task = Task.objects.filter(done=filter, user=request.user)
     else:
         task_list = Task.objects.all().order_by('-created').filter(user=request.user)
-        paginator = Paginator(task_list, 5)
+        paginator = Paginator(task_list, 4)
 
         page = request.GET.get('page')
 
@@ -21,6 +28,9 @@ def taskList(request):
 
     data = {
         'task': task,
+        'task_done_recently': task_done_recently,
+        'task_done': task_done,
+        'task_doing': task_doing,
     }
     return render(request, 'task/list.html', data)
 
