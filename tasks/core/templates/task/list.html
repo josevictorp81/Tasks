@@ -18,11 +18,16 @@
         </div>
         {% for t in task %}
             <ul class="taks-list">
-                <li class="task-item">
-                    <span><a href="{% url 'taskDetail' t.id %}">{{ t.title }}</a></span>
-                    <a href="{% url 'deleteTask' t.id %}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
-                    <a href="{% url 'editeTask' t.id %}"><span><i class="fas fa-edit"></i></span></a>
-                </li>
+                {% if t.done == 'Doing' %}
+                    <li class="task-item">
+                {% else %}
+                    <li class="task-item done">
+                {% endif %}
+                        <span><a href="{% url 'taskDetail' t.id %}">{{ t.title }}</a></span>
+                        <a href="{% url 'deleteTask' t.id %}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
+                        <a href="{% url 'editeTask' t.id %}"><span><i class="fas fa-edit"></i></span></a>
+                        <a href="{% url 'changeStatus' t.id %}"><span><i class="fas fa-check"></i></span></a>
+                    </li>
             </ul>
         {% endfor %}
         <div class="pagination">

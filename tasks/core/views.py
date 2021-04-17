@@ -76,3 +76,16 @@ def deleteTask(request, id):
     task = get_object_or_404(Task, pk=id)
     task.delete()
     return redirect('taskList')
+
+
+@login_required
+def changeStatus(request, id):
+    task = get_object_or_404(Task, pk=id)
+
+    if task.done == 'Doing':
+        task.done = 'Done'
+    else:
+        task.done = 'Doing'
+    
+    task.save()
+    return redirect('taskList')
