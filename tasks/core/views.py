@@ -10,9 +10,9 @@ from .forms import TaskModelForm
 def taskList(request):
     search = request.GET.get('search')
     if search:
-        task = Task.objects.filter(title__icontains=search)
+        task = Task.objects.filter(title__icontains=search, user=request.user)
     else:
-        task_list = Task.objects.all().order_by('-created')
+        task_list = Task.objects.all().order_by('-created').filter(user=request.user)
         paginator = Paginator(task_list, 5)
 
         page = request.GET.get('page')
@@ -42,6 +42,7 @@ def newTask(request):
         if form.is_valid():
             task = form.save(commit=False)
             task.done = 'Doing'
+            task.user = request.user
             task.save()
             return redirect('taskList')
     else:
