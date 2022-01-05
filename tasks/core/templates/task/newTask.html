@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block title %} Lista de Tarefas {% endblock %}
 
@@ -9,8 +10,14 @@
         <div class="col-9 search-div">
             <form action="{% url 'newTask' %}" method="POST">
                 {% csrf_token %}
-                {{ form.as_p }}
+                <p>
+                    {% render_field form.title class="form-control" placeholder=form.title.label %}
+                </p>
+                <p>
+                    {% render_field form.description class="form-control" placeholder=form.description.label %}
+                </p>
 
+                <a class="btn btn-secondary" href="{% url 'taskList' %}">Voltar</a>
                 <button class="btn btn-primary" type="submit">Adicionar</button>
             </form> 
         </div>
