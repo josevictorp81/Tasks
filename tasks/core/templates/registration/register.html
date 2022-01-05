@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block title %} Lista de Tarefas {% endblock %}
 
@@ -11,9 +12,15 @@
                     <form action="{% url 'signup' %}" method="POST">
                         {% csrf_token %}
                         <input type="hidden" name="next" id="" value="{{ next }}">
-
-                        {{ form.as_p }}
-
+                        <p>
+                            {% render_field form.username class="form-control" placeholder=form.username.label %}
+                        </p>
+                        <p>
+                            {% render_field form.password1 class="form-control" placeholder=form.password1.label %}
+                        </p>
+                        <p>
+                            {% render_field form.password2 class="form-control" placeholder=form.password2.label %}
+                        </p>
                         <button class="btn btn-primary" type="submit">Cadastrar</button>
                     </form>
                     <p>Já possui uma conta? <a href="{% url 'login' %}">Login</a></p>
